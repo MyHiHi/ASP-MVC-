@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "附加条件排序";
+}
+
+
+<style>
+    #sort {
+        margin: 0 auto;
+        margin-top: 100px;
+        margin-left: 100px;
+        margin-right: 500px;
+        background-color: rgb(147,190,226);
+    }
+    .myWidth{
+        
+    }
+</style>
+<div class="col-md-4">
+
+</div>
+
+
+<div class="panel" id="sort">
+    <div class="panel-heading">
+        <h3 class="panel-title">排序</h3>
+    </div>
+    <div class="panel-body">
+        <div class="input-group">
+            <input class="form-control myWidth" placeholder="请输入以空格隔开的一串整数" type="text" id="number">
+            <span class="input-group-btn"><button class="btn btn-success" type="button" id="fastSort">排序</button></span>
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-btn">
+                <button class="btn btn-warning" type="button">结果</button>
+            </span>
+            <input class="form-control myWidth" type="text" id="result">
+        </div>
+        <br />
+
+        <div class="input-group">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">ASCII从小到大排序</button>
+            </span>
+            <input class="form-control myWidth" type="text" id="result01">
+        </div>
+        <br />
+        <div class="input-group">
+            <span class="input-group-btn">
+                <button class="btn btn-danger" type="button">数字从小到大排序结果</button>
+            </span>
+            <input class="form-control myWidth" type="text" id="result02">
+        </div>
+
+        <br />
+        <div class="input-group">
+            <span class="input-group-btn">
+                <button class="btn btn-success" type="button">您的幸运数字是</button>
+            </span>
+            <input class="form-control myWidth" type="text" id="result03">
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        function empty() {
+            $("#result").val("");
+            $("#result01").val("");
+            $("#result02").val("");
+            $("#number").val("");
+        }
+        $("#fastSort").click(function () {
+            var numberList = $("#number").val();
+            var number = [];
+            if (numberList == "") {
+                alert("请输入以空格隔开的一串整数");
+                empty();
+            } else {
+                try {
+                    var numberList = numberList.split(" ");
+                    var f = "", z = "";
+                    for (var r in numberList) {
+                        var k = parseInt(numberList[r]);
+                        number[r] = k;
+                        if (isNaN(k)) {
+                            alert("您输入的格式有误!");
+                            empty();
+                            return false;
+                        }
+                        if (k > -1) {
+                            z += k + " ";
+                        } else {
+                            f += k + " ";
+                        }
+                    }
+
+                    for (var i in number) {
+                        number[i] = parseInt(number[i]);
+                    }
+
+                    numberList.sort(function (a, b) { return a > b; });
+                    console.log(typeof (number[i]))
+                    number.sort(function (a, b) { return a > b; });
+                    var k = 0;
+                    while (true) {
+                        r = number[Math.floor(Math.random() * number.length)];
+                        k++;
+                        if (k > 20) {
+                            r = 0;
+                            break;
+                        }
+                    
+                        if (r > -1)
+                            break;
+                        k++;
+                    }
+                    $("#result").val(f + z);
+                    $("#result01").val(numberList.join(" "));
+                    $("#result02").val(number.join(" "));
+                    $("#result03").val(r);
+                } catch{
+                    alert("排序有误!")
+                    empty();
+                }
+
+            }
+        })
+
+    })
+
+</script>

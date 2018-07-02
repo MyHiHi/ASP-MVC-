@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "主页";
+}
+
+<div class="container-fluid">
+
+    <h3 class="page-title">主页</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <!-- BASIC TABLE -->
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">完成情况</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>练习2</th>
+                                <th>练习3</th>
+                                <th>练习4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="info">
+                                <td>1</td>
+                                <td>完成</td>
+                                <td>完成</td>
+                                <td>完成</td>
+                            </tr>
+                            <tr class="success">
+                                <td>2</td>
+                                <td>完成</td>
+                                <td title="30%完成" class="notification-item"><span class="dot bg-danger"></span>未完成</td>
+                                <td>完成</td>
+                            </tr>
+                            <tr class="warning">
+                                <td>3</td>
+                                <td>完成</td>
+                                <td>完成</td>
+                                <td title="70%完成" class="notification-item"><span class="dot bg-warning"></span>未完成</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- END BASIC TABLE -->
+        </div>
+        <div class="col-md-6">
+            <!-- BASIC TABLE -->
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">遇到的问题和解决方法</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>练习2</th>
+                                <th>练习3</th>
+                                <th>练习4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="danger">
+                                <td>1</td>
+                                <td>未遇到问题</td>
+                                <td title="解决方法:百度查询" class="notification-item"><span class="dot bg-success"></span>问题:URL错误</td>
+                                <td>未遇到问题</td>
+                            </tr>
+                            <tr class="info">
+                                <td>2</td>
+                                <td>未遇到问题</td>
+                                <td>未遇到问题</td>
+                                <td title="解决方法:询问同学" class="notification-item"><span class="dot bg-danger"></span>问题:包过期</td>
+                            </tr>
+                            <tr class="success">
+                                <td>3</td>
+                                <td>未遇到问题</td>
+                                <td title="解决方法:查询资料" class="notification-item"><span class="dot bg-success"></span>问题:页面无法正常加载</td>
+                                <td>未遇到问题</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- END BASIC TABLE -->
+        </div>
+
+    </div>
+

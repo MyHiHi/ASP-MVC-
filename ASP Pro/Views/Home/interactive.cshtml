@@ -1,0 +1,152 @@
+﻿@model ASP_Pro.Models.MyUserModel
+
+@{
+    ViewBag.Title = "表单交互";
+    var ajaxOptions = new AjaxOptions { UpdateTargetId = "bodyContent" };
+    //var myClass = new { @class = "form-control" };
+    var myStyle = new { @style = "color:red" };
+    //var newClass = "form-control";
+    //var newStyle = "color:red";
+}
+<script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery-ui.min.js"></script>
+<style>
+    #sort {
+        margin: 0 auto;
+        margin-top: 100px;
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+</style>
+@using (Ajax.BeginForm(ajaxOptions))
+{
+
+    
+
+        <div class="" id="sort">
+            <div class="left">
+                <div class="content">
+
+
+                        <div class="header">
+                            <div class="logo text-center"><img src="~/assets/img/logo-dark.png" alt="Klorofil Logo"></div>
+                            <p class="lead">用户注册</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="signin-password" class="control-label sr-only">用户名</label>
+                        
+
+                    @Html.TextBoxFor(m => m.userName, new { @class = "form-control", placeholder = "输入用户名" })
+                </div>
+
+                @Html.ValidationMessageFor(m => m.userName, "", myStyle)
+
+
+                <div class="form-group">
+                    <label for="signin-password" class="control-label sr-only">密码</label>
+
+                            @Html.PasswordFor(m => m.userPassword, new { @class = "form-control", placeholder = "输入密码" })
+                        </div>
+
+                        @Html.ValidationMessageFor(m => m.userPassword, "", myStyle)
+
+
+                        <div class="form-group">
+                            <label for="signin-password" class="control-label sr-only">邮箱</label>
+
+                            @Html.TextBoxFor(m => m.userEmail, new { @class = "form-control", placeholder = "输入邮箱" })
+                        </div>
+
+                        @Html.ValidationMessageFor(m => m.userEmail, "", myStyle)
+
+
+                        <div class="form-group">
+                            <label for="signin-password" class="control-label sr-only">电话</label>
+
+                            @Html.TextBoxFor(m => m.userPhone, new { @class = "form-control", placeholder = "输入电话" })
+                        </div>
+
+                        @Html.ValidationMessageFor(m => m.userPhone, "", myStyle)
+
+
+                        <div class="form-group">
+                            <label for="signin-password" class="control-label sr-only">出生日期</label>
+
+                            @Html.TextBoxFor(m => m.userBirth, "", new { @class = "form-control", placeholder = "选择出生日期" })
+                        </div>
+
+                        @Html.ValidationMessageFor(m => m.userBirth, "", myStyle)
+
+
+
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">提交</button>
+   
+
+                </div>
+    </div>
+
+    @*<div class="right">
+        <div class="overlay"></div>
+            <div class="content text">
+                <h1 class="heading">Free Bootstrap dashboard template</h1>
+                <p>by The Develovers</p>
+            </div>
+    </div>*@
+    <div class="clearfix"></div>
+    </div>
+
+    <script>
+    if ("@ViewBag.Result"!="bad") {
+        if (confirm("@ViewBag.Result 确定提交?")) {
+            alert("用户已提交!")
+        }
+
+    }
+    jQuery(document).ready(function ($) {
+        $.datepicker.regional['zh-CN'] = {
+            clearText: '清除',
+            clearStatus: '清除已选日期',
+            closeText: '关闭',
+            closeStatus: '不改变当前选择',
+            prevText: '<上月',
+            prevStatus: '显示上月',
+            prevBigText: '<<',
+            prevBigStatus: '显示上一年',
+            nextText: '下月>',
+            nextStatus: '显示下月',
+            nextBigText: '>>',
+            nextBigStatus: '显示下一年',
+            currentText: '今天',
+            currentStatus: '显示本月',
+            monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+            monthNamesShort: ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'],
+            monthStatus: '选择月份',
+            yearStatus: '选择年份',
+            weekHeader: '周',
+            weekStatus: '年内周次',
+            dayNames: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+            dayNamesShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+            dayNamesMin: ['日', '一', '二', '三', '四', '五', '六'],
+            dayStatus: '设置 DD 为一周起始',
+            dateStatus: '选择 m月 d日, DD',
+            dateFormat: 'yy-mm-dd',
+            firstDay: 1,
+            initStatus: '请选择日期',
+            isRTL: false
+        };
+        $.datepicker.setDefaults($.datepicker.regional['zh-CN']);
+
+        $('#userBirth').datepicker({
+            dateFormat: 'yy-mm-dd',
+            showButtonPanel: true,
+            changeMonth: true,
+            changeYear: true,
+            showAnim: "bounce",
+            defaultDate: '1996-03-10'
+        });
+
+    })
+    </script>
+
+}

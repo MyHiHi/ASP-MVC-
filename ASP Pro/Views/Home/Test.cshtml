@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+}
+<style>
+    #sort {
+    
+        margin: 0 auto;
+        margin-top: 100px;
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+</style>
+<div class="panel" id="sort">
+    <div class="panel-heading">
+        <h3 class="panel-title" style="color:red">@Html.ActionLink("添加电影", "Test", "Home", new { area = "", id = "addMovie" }, null)</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>电影编号</th>
+                    <th>电影类型</th>
+                    <th>电影名称</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{
+                        System.Data.DataSet setds = (System.Data.DataSet)ViewData["getds"];
+                        System.Data.DataTable dt = setds.Tables[0];
+                        String[] myCss = new String[] {"success","info","danger","primary","warning" };
+                        int len = myCss.Length;
+                        Random rd = new Random();
+                        int i = 1;
+                        foreach (System.Data.DataRow dr in dt.Rows)
+
+                        {
+                        <tr class="@myCss[rd.Next(len)]">
+
+                            <td>00 @i</td>
+                            <td>@dr[1]</td>
+                            <td>@dr[2]</td>
+                            <td><a href="javascript:del(@dr[0])">删除</a> | <a href="javascript:edit(@dr[0])">编辑</a></td>
+                        </tr>
+                        i++;
+                    }
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+<script>
+    function del(id) {
+        if (confirm("确定删除?")) {
+            window.location = "/Home/DeleteMovie/" + id;
+        }
+    }
+    function edit(id) {
+        window.location = "/Home/EditMovie/" + id;
+    }
+</script>

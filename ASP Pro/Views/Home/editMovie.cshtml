@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "editMovie";
+}
+
+<style>
+    #sort {
+        margin: 0 auto;
+        margin-top: 100px;
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+</style>
+
+<div class="" id="sort">
+    <div class="left">
+        <div class="content">
+            <div class="header">
+                <div class="logo text-center"><img src="~/assets/img/logo-dark.png" alt="Klorofil Logo"></div>
+                <p class="lead">添加电影</p>
+            </div>
+            <form class="form-auth-small" action="~/Home/UpdateMovie">
+
+                @{
+                    System.Data.DataSet setds = (System.Data.DataSet)ViewData["getds"];
+                    System.Data.DataTable dt = setds.Tables[0];
+                    foreach (System.Data.DataRow dr in dt.Rows)
+
+                    {
+                        <input type="hidden" name="id" value="@dr[0]"/>
+                         <div class="form-group">
+                            <label for="signin-email" class="control-label sr-only">电影类型</label>
+
+                            <select class="form-control" name="type">
+                                <option value="科幻">科幻</option>
+                                <option value="动作">动作</option>
+                                <option value="喜剧">喜剧</option>
+                                <option value="爱情">爱情</option>
+                                <option value="战争">战争</option>
+                                <option value="恐怖" selected>恐怖</option>
+                            @*</select>*@
+                        </div>
+                        <div class="form-group">
+                            <label for="signin-password" class="control-label sr-only">电影名称</label>
+                            <input type="text" name="name" class="form-control" id="signin-password" placeholder="输入电影名称" value="@dr[2]">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">提交</button>
+                        <script>
+                            $(document).ready(function () {
+                                options = $("option");
+                                for (var i in options) {
+                                    if ($(options[i]).val() == "@dr[1]") {
+                                        console.log($(options[i]).val())
+                                        $(options[i]).attr("selected",true)
+                                       
+                                    }
+                                }
+                            })
+                        </script>
+                    }
+                }
+            </form>
+               
+
+            </div>
+            </div>
+            @*<div class="right">
+                <div class="overlay"></div>
+                <div class="content text">
+                    <h1 class="heading">Free Bootstrap dashboard template</h1>
+                    <p>by The Develovers</p>
+                </div>
+            </div>*@
+        </div>
+        
+
+
